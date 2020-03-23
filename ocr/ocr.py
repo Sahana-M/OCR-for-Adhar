@@ -1,25 +1,20 @@
 import pytesseract
 import re
+from adhar import get_adhar_front
+from preprocessing import text_preprocessing, gray_scaling, noise_removal, scaling
 
 
-def formatting_text(text):
-    text = text.split('\n')
-    list1 = []
-    list1 = text
-    list2 = []
-    for word in list1:
-        res1 = " ".join(re.findall("[a-zA-Z0-9]+", word))
-        res1 = str(res1)
-        if len(res1)>0:
-            list2.append(res1.upper())
-    return list2
+#obtaining text from preprocessed image
+def preprocessed_ocr(image):
+    gray_img = gray_scaling.gray_scale(image)
+    no_noise_img = noise_removal.image_noise_removal(gray_img)
+    text = pytesseract.image_to_string(no_noise_img, config="-l eng+hin")
+    text = text_preprocessing.formatting_text(text)
+    return text
 
 
-
-def ocr(image):
-    text = pytesseract.image_to_string(image)
-    list2 = formatting_text(text)
-    return list2
-
-    
-
+#obtaining text from raw image
+def raw_ocr(image):
+    text = pytesseract.image_to_string(image, config="-l eng+tam")
+    text = text_preprocessing.formatting_text(text)
+    return text

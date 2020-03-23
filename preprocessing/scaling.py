@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 tempfile ='out.jpg'
 
-def set_image_dpi(file_path):
-    im = Image.open(file_path)
+def set_image_dpi(image):
+    im = Image.open(image)
     length_x, width_y = im.size
     factor = min(1, float(1024.0 / length_x))
     size = int(factor * length_x), int(factor * width_y)

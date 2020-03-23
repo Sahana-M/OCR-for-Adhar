@@ -1,57 +1,56 @@
 import sys
 sys.path.append('Users/sahana/Desktop/ocr_for_actyv(4/03)')
 import cv2
-from deskewing import deskew
-from preprocessing import gray_scaling, scaling, noise_removal
+from preprocessing import gray_scaling, scaling, noise_removal,text_preprocessing
+from adhar import get_adhar_front, get_adhar_back
 from ocr import ocr
-import matplotlib.pyplot as plt
-import pytesseract
-from pytesseract import Output
+import config as cfg
 
 
-images = ['images/a1.jpg']
+
+#CHECKING IF THE IMAGE IS ADHAR BACK OR NOT
+def is_adhar_back(processed_img_text, raw_image_text):
+    return get_adhar_back.check_adhar_back(processed_img_text, raw_image_text)
 
 
-for l in range(1):
-    image_path = images[l]
-
-    img = cv2.imread(image_path)
-
-    d = pytesseract.image_to_data(img, output_type=Output.DICT)
-    print(d.keys())
-
-    n_boxes = len(d['text'])
-    for i in range(n_boxes):
-        if int(d['conf'][i]) > 10:
-            (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
-            img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            text = pytesseract.image_to_string(img, config = '-l eng+tam')
-            print("\n", text)
+#CHECKING IF THE IMAGE IS ADHAR FRONT OR NOT
+def is_adhar_front(processed_img_text, raw_image_text):
+    return get_adhar_front.check_adhar_front(processed_img_text, raw_image_text)
 
 
-    cv2.imwrite('out.jpg', img)
 
 
-    
-    # if(len(text) < 3):
-        #SCALING
-    scaled_img = scaling.set_image_dpi(image_path)
+#CHECKING THE TYPE OF DOC AND GETTING FIELDS
+def steps(image_file):    
 
-        #GRAY SCALING SCALING IN 
-    gray_img = gray_scaling.gray_scale(scaled_img)
-        
-        #NOISE REMOVAL
-    no_noise_img = noise_removal.image_noise_removal(gray_img)
-
-    # fig = plt.figure()
-    # ax1 = fig.add_subplot()
-    # ax1.imshow(no_noise_img)
-    # plt.show()
+    #Getting text from ocr (preprocessed image text & raw image text)
+    processed_img_text = ocr.preprocessed_ocr(image_file)
+    raw_image_text = ocr.raw_ocr(image_file)
     
 
-    text = ocr.ocr(no_noise_img)
+    #CHECKING AND GETTINGS FIELDS FROM ADHAR BACK
+    if is_adhar_back(processed_img_text, raw_image_text):
+        adhar_back_text = get_adhar_back.get_details_adhar_back(raw_image_text)
+        return adhar_back_text
+
+
+    #CHECKING AND GETTINGS FIELDS FROM ADHAR FRONT
+    if is_adhar_front(processed_img_text, raw_image_text):
+        adhar_front_text = get_adhar_front.get_details_adhar_front(processed_img_text, raw_image_text)
+        return adhar_front_text
+
+
+    return cfg.ERROR_MESSAGE
+
     
-    print("\n----------------------\ntext : ", text )
-    
-    # else:
-    #print(text)
+
+
+
+
+
+
+# import pdb; pdb.set_trace()
+# import os
+# image_file.seek(0, os.SEEK_END)
+# size = image_file.tell()
+# print(size)
