@@ -2,4 +2,4 @@ Flask
 gunicorn
 tesseract
 pytesseract
-opencv-python
+opencv-python-headless
