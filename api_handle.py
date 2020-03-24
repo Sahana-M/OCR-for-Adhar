@@ -26,7 +26,6 @@ def upload_file():
         npimg = np.fromstring(file, np.uint8)
         file = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
         extracted_text = main.steps(file)
-        print("extracted : ", extracted_text)
         return extracted_text
     return redirect('/')
 
