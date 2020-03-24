@@ -20,11 +20,13 @@ def home():
 def upload_file():
     if request.method == 'POST':
         file_url = json.loads(request.data)["file"]
+        print("ulr : ", file_url)
         response = urllib.request.urlopen(file_url)
         file = response.read()    
         npimg = np.fromstring(file, np.uint8)
         file = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
         extracted_text = main.steps(file)
+        print("extracted : ", extracted_text)
         return extracted_text
     return redirect('/')
 
