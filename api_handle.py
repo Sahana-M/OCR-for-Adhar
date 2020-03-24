@@ -15,21 +15,17 @@ def home():
     return render_template('home.html')
 
 
-
 #GETING DETAILS FROM AADHAR
 @app.route('/get_adhar', methods=['POST'])
 def upload_file():
     if request.method == 'POST':
-            file_url = json.loads(request.data)["file"]
-            response = urllib.request.urlopen(file_url)
-            file = response.read()    
-            npimg = np.fromstring(file, np.uint8)
-            file = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
-            extracted_text = main.steps(file)
-            return extracted_text
-      
-    else:
-        return redirect(request.url)
+        file_url = json.loads(request.data)["file"]
+        response = urllib.request.urlopen(file_url)
+        file = response.read()    
+        npimg = np.fromstring(file, np.uint8)
+        file = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
+        extracted_text = main.steps(file)
+        return extracted_text
     return redirect('/')
 
 

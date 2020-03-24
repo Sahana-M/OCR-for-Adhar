@@ -27,6 +27,7 @@ def steps(image_file):
     processed_img_text = ocr.preprocessed_ocr(image_file)
     raw_image_text = ocr.raw_ocr(image_file)
 
+
     #CHECKING AND GETTINGS FIELDS FROM ADHAR BACK
     if is_adhar_back(processed_img_text, raw_image_text):
         adhar_back_text = get_adhar_back.get_details_adhar_back(raw_image_text)
@@ -42,6 +43,21 @@ def steps(image_file):
     return cfg.ERROR_MESSAGE
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # import pdb; pdb.set_trace()
 # import os
