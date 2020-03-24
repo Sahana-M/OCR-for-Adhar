@@ -26,7 +26,8 @@ def upload_file():
             npimg = np.fromstring(file, np.uint8)
             print("npimg size : ", npimg.size())
             file = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
-            print("file size  : ", size(file))
+            print("file type  : ", type(file))
+            print("file size  : ", sizeof(file))
             extracted_text = main.steps(file)
             print("extacted text : ", extracted_text)
             return extracted_text
