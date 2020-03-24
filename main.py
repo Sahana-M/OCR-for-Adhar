@@ -1,5 +1,5 @@
 import sys
-sys.path.append('Users/sahana/Desktop/ocr_for_actyv(4/03)')
+#sys.path.append('Users/sahana/Desktop/ocr_for_actyv(4/03)')
 import cv2
 from preprocessing import gray_scaling, scaling, noise_removal,text_preprocessing
 from adhar import get_adhar_front, get_adhar_back
@@ -26,7 +26,6 @@ def steps(image_file):
     #Getting text from ocr (preprocessed image text & raw image text)
     processed_img_text = ocr.preprocessed_ocr(image_file)
     raw_image_text = ocr.raw_ocr(image_file)
-    
 
     #CHECKING AND GETTINGS FIELDS FROM ADHAR BACK
     if is_adhar_back(processed_img_text, raw_image_text):
@@ -43,11 +42,6 @@ def steps(image_file):
     return cfg.ERROR_MESSAGE
 
     
-
-
-
-
-
 
 # import pdb; pdb.set_trace()
 # import os

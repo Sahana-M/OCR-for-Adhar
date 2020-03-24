@@ -84,18 +84,19 @@ def find_husband_name(processed_img_text, raw_image_text):
 
 #getting name from aadhar card
 def find_adhar_name(processed_img_text, raw_image_text):
-    #Name can be the 2nd string after GOVERNMENT OF INDIA in preprocessed img text(GOI is better extracted in preprocessed img text)
-    for index in range(len(processed_img_text)):
-        if((jaccard_similarity(processed_img_text[index], cfg.ADHAR_FRONT_IDENTIFIER) >= 0.7)
-            and (index+2)<len(processed_img_text)):
-            name = processed_img_text[index+2]
-            return name
-
-    #Name can be the 2nd string after GOVERNMENT OF INDIA in raw img text, if GOI matches >= 70% accuracy
+    
+    #Name can be the 2nd string after GOVERNMENT OF INDIA in raw img text(GOI 
     for index in range(len(raw_image_text)):
         if((jaccard_similarity(raw_image_text[index], cfg.ADHAR_FRONT_IDENTIFIER) >= 0.7)
             and (index+2)<len(raw_image_text)):
             name = raw_image_text[index+1]
+            return name
+
+    #Name can be the 2nd string after GOVERNMENT OF INDIA in preprocessed img text
+    for index in range(len(processed_img_text)):
+        if((jaccard_similarity(processed_img_text[index], cfg.ADHAR_FRONT_IDENTIFIER) >= 0.7)
+            and (index+2)<len(processed_img_text)):
+            name = processed_img_text[index+2]
             return name
 
     #Name can be 1 string before DOB in raw text
