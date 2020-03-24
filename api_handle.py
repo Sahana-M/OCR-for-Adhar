@@ -20,7 +20,6 @@ def home():
 @app.route('/get_adhar', methods=['POST'])
 def upload_file():
     if request.method == 'POST':
-        try:
             file_url = json.loads(request.data)["file"]
             response = urllib.request.urlopen(file_url)
             file = response.read()    
@@ -31,8 +30,7 @@ def upload_file():
             extracted_text = main.steps(file)
             print("extacted text : ", extracted_text)
             return extracted_text
-        except:
-            return cfg.ERROR_URL_EXCEPTION
+      
     else:
         return redirect(request.url)
     return redirect('/')
