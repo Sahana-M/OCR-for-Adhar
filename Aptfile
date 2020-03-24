@@ -2,9 +2,7 @@ libsm6
 libxrender1
 libfontconfig1
 libice6
-libpng12-dev
 libpng16-16
-libpng12-0
 tesseract-ocr
 tesseract-ocr-eng
 tesseract-ocr-hin
