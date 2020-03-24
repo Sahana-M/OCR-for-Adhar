@@ -180,7 +180,7 @@ def get_details_adhar_front(processed_img_text, raw_image_text):
         dob, age = find_dob(processed_img_text)
 
     d = {'fileIdentified' : "document_front.jpg", 'idNumber': adhar_number, 'name': adhar_name,
-        'fatherName' : father_name, 'husbandName' : husband_name, 'dob': dob, 'age' : age, 'gender' : gender}
+        'father' : father_name, 'husband' : husband_name, 'dob': dob, 'age' : age, 'gender' : gender}
     return d
 
 

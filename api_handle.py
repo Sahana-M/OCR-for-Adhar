@@ -23,11 +23,13 @@ def upload_file():
         try:
             file_url = json.loads(request.data)["file"]
             response = urllib.request.urlopen(file_url)
-            file = response.read()
-            print("file : ", file)        
+            file = response.read()    
             npimg = np.fromstring(file, np.uint8)
+            print("npimg size : ", npimg.size())
             file = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
+            print("file size  : ", size(file))
             extracted_text = main.steps(file)
+            print("extacted text : ", extracted_text)
             return extracted_text
         except:
             return cfg.ERROR_URL_EXCEPTION
