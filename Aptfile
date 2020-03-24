@@ -3,22 +3,7 @@ libxrender1
 libfontconfig1
 libice6
 libpng12-0
-libpng12-dev
-
-libjpeg62-dev
-autoconf automake libtool
-g++
-libopencv-dev libtesseract-dev
-libtiff4-dev
-git
-cmake
-build-essential
-libleptonica-dev
-liblog4cplus-dev
-libcurl3-dev
-tk8.5 tcl8.5 tk8.5-dev tcl8.5-dev
-build-dep python-imaging --fix-missing
-
+libpng-dev
 tesseract-ocr
 tesseract-ocr-eng
 tesseract-ocr-hin
