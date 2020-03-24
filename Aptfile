@@ -6,6 +6,7 @@ libice6
 libpng-dev
 libpng12-0
 libpng12-dev
+libpng16-dev
 libpng16-16
 tesseract-ocr
 tesseract-ocr-eng
