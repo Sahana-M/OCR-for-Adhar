@@ -24,10 +24,9 @@ def upload_file():
             response = urllib.request.urlopen(file_url)
             file = response.read()    
             npimg = np.fromstring(file, np.uint8)
-            print("npimg size : ", npimg.size())
+            print("npimg size : ", npimg)
             file = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
             print("file type  : ", type(file))
-            print("file size  : ", sizeof(file))
             extracted_text = main.steps(file)
             print("extacted text : ", extracted_text)
             return extracted_text
