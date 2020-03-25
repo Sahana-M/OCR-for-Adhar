@@ -1,5 +1,5 @@
 import sys
-#sys.path.append('Users/sahana/Desktop/ocr_for_actyv(4/03)')
+sys.path.append('Users/sahana/Desktop/ocr_for_actyv(4/03)')
 import cv2
 from preprocessing import gray_scaling, scaling, noise_removal,text_preprocessing
 from adhar import get_adhar_front, get_adhar_back

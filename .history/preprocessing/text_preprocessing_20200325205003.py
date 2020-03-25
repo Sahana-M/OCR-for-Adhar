@@ -1,6 +1,5 @@
 import re
 
-
 #will help us to preprocess the text
 def formatting_text(text):
     text = text.split('\n')

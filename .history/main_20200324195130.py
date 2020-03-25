@@ -23,7 +23,7 @@ def is_adhar_front(processed_img_text, raw_image_text):
 #CHECKING THE TYPE OF DOC AND GETTING FIELDS
 def steps(image_file):    
     #Getting text from ocr (preprocessed image text & raw image text)
-    processed_img_text = ocr.image_preprocess_ocr(image_file)
+    processed_img_text = ocr.preprocessed_ocr(image_file)
     raw_image_text = ocr.raw_ocr(image_file)
 
 

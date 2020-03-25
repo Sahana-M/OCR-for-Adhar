@@ -65,6 +65,16 @@ def find_husband_name(extracted_text):
     return ''
 
 
+def name_before_dob(extracted_text):
+    for index in range(len(extracted_text)):
+        if((re.search(cfg.DOB, extracted_text[index])
+            or re.search(cfg.YOB, extracted_text[index])
+            or re.search(cfg.DOB_SLASH, extracted_text[index])
+            or re.search(cfg.DOB_HIFEN, extracted_text[index]))
+            and (index-1)>=0):
+            name = extracted_text[index-1]
+            return name
+
 #getting name from aadhar card
 def find_adhar_name(processed_img_text, raw_image_text):
     
@@ -83,14 +93,8 @@ def find_adhar_name(processed_img_text, raw_image_text):
             return name
 
     #Name can be 1 string before DOB in raw text
-    for index in range(len(raw_image_text)):
-        if((re.search(cfg.DOB, raw_image_text[index])
-            or re.search(cfg.YOB, raw_image_text[index])
-            or re.search(cfg.DOB_SLASH, raw_image_text[index])
-            or re.search(cfg.DOB_HIFEN, raw_image_text[index]))
-            and (index-1)>=0):
-            name = raw_image_text[index-1]
-            return name
+    name = name_before_dob(raw_image_text)
+    return name
 
     #Name can be 1 string before DOB in preprocessed text
     for index in range(len(processed_img_text)):
@@ -164,7 +168,6 @@ def get_details_adhar_front(processed_img_text, raw_image_text):
 
     gender = find_gender(processed_img_text)
     if gender == '': find_gender(raw_image_text)
-    
     dob, age = find_dob(raw_image_text)
     if(dob == '' and age == ''):
         dob, age = find_dob(processed_img_text)

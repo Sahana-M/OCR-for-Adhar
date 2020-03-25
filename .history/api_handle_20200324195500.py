@@ -20,6 +20,7 @@ def home():
 def upload_file():
     if request.method == 'POST':
         file_url = json.loads(request.data)["file"]
+        print("ulr : ", file_url)
         response = urllib.request.urlopen(file_url)
         file = response.read()    
         npimg = np.fromstring(file, np.uint8)

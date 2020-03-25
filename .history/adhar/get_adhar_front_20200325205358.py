@@ -53,14 +53,14 @@ def find_father_name(extracted_text):
 
 
 #finding husband name
-def find_husband_name(extracted_text):
-    for l in range(len(extracted_text)):
-        if(re.search(cfg.HUSBAND_NAME, extracted_text[l])):    #finding husband name from raw text as it had better extracted it
-            if(len(extracted_text[l]) > 7):
-                father_name = (extracted_text[l])[8:]
+def find_husband_name(processed_img_text, raw_image_text):
+    for l in range(len(raw_image_text)):
+        if(re.search(cfg.HUSBAND_NAME, raw_image_text[l])):    #finding husband name from raw text as it had better extracted it
+            if(len(raw_image_text[l]) > 7):
+                father_name = (raw_image_text[l])[8:]
                 return father_name
             else:
-                father_name = extracted_text[l+1]
+                father_name = raw_image_text[l+1]
                 return father_name
     return ''
 
@@ -153,18 +153,16 @@ def find_gender(text):
 #getting fields from aadhar front
 def get_details_adhar_front(processed_img_text, raw_image_text):
     adhar_number = get_adhar_number(processed_img_text, raw_image_text)
-
     adhar_name = find_adhar_name(processed_img_text, raw_image_text)
 
     father_name = find_father_name(raw_image_text)
-    if father_name == '': father_name = find_father_name(processed_img_text)
+    if father_name == '': find_father_name(processed_img_text)
 
     husband_name = find_husband_name(raw_image_text)
-    if husband_name == '': husband_name = find_husband_name(processed_img_text)
+    if husband_name == '': find_husband_name(processed_img_text)
 
     gender = find_gender(processed_img_text)
     if gender == '': find_gender(raw_image_text)
-    
     dob, age = find_dob(raw_image_text)
     if(dob == '' and age == ''):
         dob, age = find_dob(processed_img_text)

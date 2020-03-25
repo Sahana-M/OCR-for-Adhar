@@ -5,7 +5,7 @@ from preprocessing import text_preprocessing, gray_scaling, noise_removal, scali
 
 
 #obtaining text from preprocessed image
-def image_preprocess_ocr(image):
+def preprocessed_ocr(image):
     gray_img = gray_scaling.gray_scale(image)
     no_noise_img = noise_removal.image_noise_removal(gray_img)
     text = pytesseract.image_to_string(no_noise_img, config="-l eng+hin")

@@ -2,9 +2,9 @@ from PIL import Image
 import cv2
 
 
+
 tempfile ='out.jpg'
 
-#used to set image dpi to 300, increases image quality
 def set_image_dpi(image):
     im = Image.open(image)
     length_x, width_y = im.size

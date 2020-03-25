@@ -22,44 +22,44 @@ def list_to_string(text, left_index, right_index):
 #finding out the address
 def get_address(text):
     address = ''
-    for index in range(len(text)):
+    for l in range(len(text)):
         #either the address has "address"
-        if(re.search(cfg.ADDRESS, text[index])):
-            index = index + 1
+        if(re.search("^ADDRESS", text[l])):
+            l = l + 1
             last_index = len(text)-1
-            while(last_index>=index):
+            while(last_index>=l):
                 if(re.search("\d{6}", text[last_index])):
                     pincode = re.findall('\d{6}', text[last_index])
-                    address = list_to_string(text, index, last_index)
+                    address = list_to_string(text, l, last_index)
                     return (address, pincode[0])
                     
                 last_index = last_index-1
         
         #it can start from "TO" also
-        if(re.search("^TO", text[index])):
-            while(index<len(text)):
-                if(re.search("D/O",text[index]) or re.search("S/O",text[index]) or re.search("W/O",text[index])):
+        if(re.search("^TO", text[l])):
+            while(l<len(text)):
+                if(re.search("D/O",text[l]) or re.search("S/O",text[l]) or re.search("W/O",text[l])):
                     last_index = len(text)-1
-                    while(last_index>=index):
+                    while(last_index>=l):
                         if(re.search("\d{6}", text[last_index])):
                             pincode = re.findall('\d{6}', text[last_index])
-                            address = list_to_string(text, index, last_index)
+                            address = list_to_string(text, l, last_index)
                             return (address, pincode[0])
                             
                         last_index = last_index-1
-                index = index + 1
+                l = l + 1
         
         #it can start from "D/O", "S/O", "W/O"
-        if(re.search("D/O",text[index]) or re.search("S/O",text[index]) or re.search("W/O",text[index])):
+        if(re.search("D/O",text[l]) or re.search("S/O",text[l]) or re.search("W/O",text[l])):
             last_index = len(text)-1
-            while(last_index>=index):
+            while(last_index>=l):
                 if(re.search("\d{6}", text[last_index])):
                         pincode = re.findall('\d{6}', text[last_index])
-                        address = list_to_string(text, index, last_index)
+                        address = list_to_string(text, l, last_index)
                         return (address, pincode[0])
                             
                 last_index = last_index-1
-        index = index + 1
+        l = l + 1
 
     return ('','')
 

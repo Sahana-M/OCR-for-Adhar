@@ -164,7 +164,6 @@ def get_details_adhar_front(processed_img_text, raw_image_text):
 
     gender = find_gender(processed_img_text)
     if gender == '': find_gender(raw_image_text)
-    
     dob, age = find_dob(raw_image_text)
     if(dob == '' and age == ''):
         dob, age = find_dob(processed_img_text)

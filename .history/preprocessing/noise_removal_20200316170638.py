@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 
 
-#used to remove the noise from the image
 def image_noise_removal(img):
    filtered = cv2.adaptiveThreshold(img.astype(np.uint8), 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 13, 2)
    kernel = np.ones((1,1), np.uint8)

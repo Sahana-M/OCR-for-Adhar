@@ -24,7 +24,7 @@ def get_address(text):
     address = ''
     for index in range(len(text)):
         #either the address has "address"
-        if(re.search(cfg.ADDRESS, text[index])):
+        if(re.search("^ADDRESS", text[index])):
             index = index + 1
             last_index = len(text)-1
             while(last_index>=index):
