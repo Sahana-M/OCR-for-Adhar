@@ -7,13 +7,12 @@
     <title>Actyv OCR</title>
 </head>
 <body>
-        <h2>Actyv ocr : Version 1.0</h2>
+        <h2>Actyv ocr : Version.1</h2>
         <h3>This API is designed to extract general fields from Adhar card</h3>
-        <h4>URL :- https://custom-ocr.herokuapp.com/get_adhar</h4>
         <h3>It accepts 2 types of document</h3>
         <li>Adhar front image</li>
         <li>Adhar back image</li>
-        <h3>The general fields extracted from uploaded Adhar front image includes, </h3>
+        <h3>A general field for uploaded Adhar front image includes, </h3>
         <li>Name</li>
         <li>DOB</li>
         <li>Gender</li>
@@ -23,7 +22,7 @@
         <li>Document identified</li>
         <br>
 
-        <h3>The general fields extracted from uploaded Adhar back image includes, </h3>
+        <h3>A general field for uploaded Adhar back image includes, </h3>
         <li>Address</li>
         <li>Pincode</li>
         <li>Document identified</li>
@@ -37,7 +36,7 @@
             "file" : "image_url"<br>
             }</li><br>
         
-        <h3>Response format for Adhar front image</h3>
+        <h3>Response format</h3>
         <li>Response type - JSON response</li>
         <li>Example :- <br>
         {<br>
@@ -49,15 +48,6 @@
             "husband": "husband name",<br>
             "idNumber": "adhar number",<br>
             "name": "name"<br>
-        }</li>
-
-        <h3>Response format for Adhar back image</h3>
-        <li>Response type - JSON response</li>
-        <li>Example :- <br>
-        {<br>
-            "address": "xxxxxx", <br>
-            "fileIdentified" : "document_back.jpg", <br>
-            "pincode" : "xxxxxx"<br>
         }</li>
     </body>
 </html>

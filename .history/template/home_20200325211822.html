@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Actyv OCR</title>
+</head>
+<body>
+        <h2>Actyv ocr : Version.1</h2>
+        <h3>This API is designed to extract general fields from Adhar card</h3>
+        <h3>It accepts 2 types of document</h3>
+        <li>Adhar front image</li>
+        <li>Adhar back image</li>
+        <h3>A general field for uploaded Adhar front image includes, </h3>
+        <li>Name</li>
+        <li>DOB</li>
+        <li>Gender</li>
+        <li>Father/Husband name</li>
+        <li>Age</li>
+        <li>Adhar number</li>
+        <li>Document identified</li>
+        <br>
+        <h3>A general field for uploaded Adhar back image includes, </h3>
+        <li>Address</li>
+        <li>Pincode</li>
+        <li>Document identified</li>
+        <h3>Request format</h3>
+        <li>Request     - POST</li>
+        <li>Request URL - https://custom-ocr.herokuapp.com/get_adhar</li>
+        <li>In Body     -> raw format    -> JSON request</li>
+        <li>Example :- {
+            "file" : "https://sankara-patients-aadhar.s3.amazonaws.com/8765510951%2F7c1f8d87-79b4-4e93-b503-0d5b04a159c7.jpg"
+            }</li>
+    </body>
+</html>
