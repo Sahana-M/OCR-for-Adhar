@@ -1,3 +1,7 @@
 /adhar_images
 /images
 heroku_push.sh
+__pycache__/
+.history/
+heroku_push.sh
+.gitignore

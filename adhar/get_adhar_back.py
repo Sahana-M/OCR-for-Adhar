@@ -2,6 +2,8 @@ import config as cfg
 import re
 
 
+##
+
 #finding out the similarity in sentences
 def jaccard_similarity(query, document):
     intersection = set(query).intersection(set(document))

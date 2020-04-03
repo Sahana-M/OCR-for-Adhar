@@ -18,3 +18,5 @@ def raw_ocr(image):
     text = pytesseract.image_to_string(image, config="-l eng+tam")
     text = text_preprocessing.formatting_text(text)
     return text
+
+##

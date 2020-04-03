@@ -63,3 +63,7 @@ def steps(image_file):
 # image_file.seek(0, os.SEEK_END)
 # size = image_file.tell()
 # print(size)
+
+
+
+
